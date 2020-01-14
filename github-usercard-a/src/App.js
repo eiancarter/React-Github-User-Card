@@ -1,8 +1,7 @@
 import React, { Component } from 'react'; 
 import './App.css';
 import GitList from './components/GitList';
-
-
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -14,10 +13,16 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.setState({
-      cards: data
-    });
-    console.log('component mounts!')
+    axios
+      .get(`https://api.github.com/users/${username}`)
+      .then(response => {
+        this.setState({
+          cards: response.data
+        })
+      }
+      .catch(error => {
+        console.log('nope!', error);
+      });
   }
   render() {
     return (
