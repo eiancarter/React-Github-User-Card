@@ -2,7 +2,14 @@ import React from 'react';
 
 const GitList = props => {
     return (
-        <div>
+        <div className='follower-container'>
+            <form className='search'>
+                <input 
+                    type='text'
+                    placeholder='search followers...'
+                />
+                <button>Submit</button>
+            </form>
             {/* <GitCard followers={this.state.followers} /> */}
              {props.followers.map(follower => (
                 <div className='git-cards' key={follower.id}>
